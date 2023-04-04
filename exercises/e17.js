@@ -1,31 +1,21 @@
 export function minBy(array, cb) {
-  var index = 0;
-  if (array.length) {
-    var value = cb(array[index]);
-  } else {
-    return undefined;
-  }
+  if (!array.length) return;
+  let value = array[0];
   for (var i = 1; i < array.length; i++) {
-    if (cb(array[i]) < value) {
-      value = cb(array[i]);
-      index = i;
+    if (cb(array[i]) < cb(value)) {
+      value = array[i];
     }
   }
-  return array[index];
+  return value;
 }
 
 export function maxBy(array, cb) {
-  var index = 0;
-  if (array.length) {
-    var value = cb(array[index]);
-  } else {
-    return undefined;
-  }
+  if (!array.length) return;
+  var value = array[0];
   for (var i = 1; i < array.length; i++) {
-    if (cb(array[i]) > value) {
-      value = cb(array[i]);
-      index = i;
+    if (cb(array[i]) > cb(value)) {
+      value = array[i];
     }
   }
-  return array[index];
+  return value;
 }
